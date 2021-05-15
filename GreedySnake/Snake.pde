@@ -6,9 +6,9 @@ class Snake {
     
     public Snake() {
         int origin = N / 2; 
+        body.addLast(new Point(origin, origin + 1));
         body.addLast(new Point(origin, origin));
         body.addLast(new Point(origin, origin - 1));
-        body.addLast(new Point(origin, origin - 2));
     }
     
     public void draw() {
