@@ -1,14 +1,14 @@
 class Snake {
-    private LinkedList<Point> body = new LinkedList<Point>();
+    private LinkedList<PVector> body = new LinkedList<PVector>();
     private int dx = 0;
     private int dy = 1;
     private boolean isDead = false;
     
     public Snake() {
         int origin = N / 2; 
-        body.addLast(new Point(origin, origin + 1));
-        body.addLast(new Point(origin, origin));
-        body.addLast(new Point(origin, origin - 1));
+        body.addLast(new PVector(origin, origin + 1));
+        body.addLast(new PVector(origin, origin));
+        body.addLast(new PVector(origin, origin - 1));
     }
     
     public void draw() {
@@ -25,17 +25,17 @@ class Snake {
         }
     }
     
-    private void drawBody(Point p) {
-        rect(p.getX() * blockWidth, p.getY() * blockHeight, blockWidth, blockHeight);
+    private void drawBody(PVector p) {
+        rect(p.x * blockWidth, p.y * blockHeight, blockWidth, blockHeight);
     }
     
     private void update() {
-        Point head = body.getFirst();
-        Point next = new Point(head.x + dx, head.y + dy);
+        PVector head = body.getFirst();
+        PVector next = new PVector(head.x + dx, head.y + dy);
         
         
-        if (next.getX() < 0 || next.getX() >= N ||
-            next.getY() < 0 || next.getY() >= N ||
+        if (next.x < 0 || next.x >= N ||
+            next.y < 0 || next.y >= N ||
             isAteBody(next)) {
             isDead = true;
         } else {
@@ -48,14 +48,14 @@ class Snake {
         return isDead;
     }
     
-    private boolean isAteBody(Point next) {
+    private boolean isAteBody(PVector next) {
         for (int i = 1; i < body.size(); i++) {
             if (next.equals(body.get(i))) return true;
         }
         return false;
     }
     
-    private Point head() {
+    private PVector head() {
         return body.getFirst();
     }
     
@@ -69,11 +69,11 @@ class Snake {
     }
     
     public boolean canEat(Food p) {
-        return head().getX() == p.getX() &&
-               head().getY() == p.getY();
+        return head().x == p.x &&
+               head().y == p.y;
     }
     
-    public boolean contains(Point p) {
+    public boolean contains(PVector p) {
         return body.contains(p);
     }
 }
