@@ -31,7 +31,7 @@ Food food;
 
 void setup() {
     size(525, 525);
-    frameRate(7);
+    frameRate(5);
     
     blockWidth = width / N;
     blockHeight = height / N;
@@ -65,7 +65,7 @@ void keyPressed() {
     if (key == 'r') {
         setup();
     } else if (key == 'w' || key == 'k' || keyCode == UP) {
-        snake.setDir(0, - 1);
+        snake.setDir(0, -1);
     } else if (key == 'a' || key == 'h' || keyCode == LEFT) {
         snake.setDir(-1, 0);
     } else if (key == 's' || key == 'j' || keyCode == DOWN) {

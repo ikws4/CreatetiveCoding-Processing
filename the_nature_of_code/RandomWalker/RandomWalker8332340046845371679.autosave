@@ -1,0 +1,35 @@
+Walker walker;
+
+void setup() {
+  walker = new Walker();
+
+  size(640, 360);
+
+  background(255);
+}
+
+
+void draw() {
+  // walker.step();
+  // walker.draw();
+  
+  
+  drawNormalDistributionGraph();
+}
+
+void drawNormalDistributionGraph() {
+
+  noFill();
+  beginShape();
+
+  for (int x = 0; x <= width; x++) {
+    vertex(x, height - normalDistribution(x, 1, 0) * 100);
+
+  }
+
+  endShape(CLOSE);
+}
+
+float normalDistribution(float x, float std, int mean) {
+  return (float) (1 / (std * Math.sqrt(2 * Math.PI)) * Math.pow(Math.E, 0.5 * Math.pow((x - mean) / std, 2)));
+}

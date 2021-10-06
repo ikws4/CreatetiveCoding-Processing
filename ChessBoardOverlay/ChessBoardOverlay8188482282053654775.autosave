@@ -1,0 +1,21 @@
+// vim:filetype=java
+
+import java.util.*;
+
+Solver solver;
+
+void setup() {
+  size(400, 400);
+
+  solver = new Solver(8, 0, 0);
+  
+}
+
+void draw() {
+  background(255);
+
+  solver.update();
+  solver.draw(); 
+
+  noLoop();
+}
